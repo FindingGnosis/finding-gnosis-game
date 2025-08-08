@@ -1,0 +1,63 @@
+<!--
+  Finding Gnosis - A simple browser game built with Phaser 3.
+
+  This file sets up the game canvas and displays an email collection form
+  once the player completes the game. It also links to the
+  accompanying CSS for styling and the JavaScript containing the game
+  logic. If you upload these three files (index.html, styles.css and
+  game.js) to a hosting service such as GitHub Pages or Netlify, the
+  game will run in the browser without any extra configuration.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finding Gnosis</title>
+  <!-- Link to our custom styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Load Phaser 3 from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+</head>
+<body>
+  <!-- Introduction overlay shown at the start of the game. It provides
+       a brief story and a button to begin the journey. -->
+  <div id="intro-container">
+    <h1>Escaping the Soul Trap</h1>
+    <p>You have left your mortal coil. The astral realms churn with
+       echoes of forgotten lives. Navigate the labyrinthine soul trap,
+       avoid the snares of reincarnation, and seek the portal to
+       ultimate Gnosis.</p>
+    <button id="start-button" onclick="startGame()">Begin</button>
+  </div>
+
+  <!--
+    The game container is where Phaser will render the game. It will
+    be hidden once the player reaches the goal, after which the email
+    form will appear.
+  -->
+  <div id="game-container"></div>
+  
+  <!--
+    The email container is hidden by default and only shown when
+    showEmailForm() is called from the game. It asks the player to
+    enter their email address to receive updates. Replace the form
+    action with your own newsletter signup or mail service URL if
+    necessary.
+  -->
+  <div id="email-container" style="display: none;">
+    <h2>You have achieved Gnosis!</h2>
+    <p>Enter your email address below to join our newsletter and be
+       notified of the next live stream.</p>
+    <form onsubmit="handleEmailSubmit(event)">
+      <input type="email" id="email-input" placeholder="Your email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="message" id="email-message"></p>
+  </div>
+
+  <!-- Our game logic -->
+  <script src="game.js"></script>
+</body>
+</html>
